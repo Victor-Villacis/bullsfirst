@@ -76,7 +76,7 @@
     </div>
 
     <div class="right-section">
-
+  <!-- Chart Goes Here -->
     <div id="chart-wrapper" ng-app='myApp',>
   <div ng-controller="chartCtrl">
     <chart-wrapper data-series="{{chartData}}"></chart-wrapper>
@@ -84,10 +84,11 @@
 </div>
 
 <dom-module id="chart-wrapper">
+<!-- vaadin-charts template -->
   <template>
     <vaadin-pie-chart>
-      <chart-title>Revenue by industry</chart-title>
-      <subtitle>2015</subtitle>
+      <chart-title>Accounts</chart-title>
+      <subtitle>2016</subtitle>
       <tooltip point-format="<b>{point.percentage:.1f}%</b>"></tooltip>
       <plot-options>
         <pie allow-point-select="true" show-in-legend="true"
@@ -101,6 +102,7 @@
     </vaadin-pie-chart>
   </template>
   <script>
+  // Calling webcomponents and initializingthe chart wrapper.
     addEventListener('WebComponentsReady', function () {
       Polymer({
         is: "chart-wrapper",

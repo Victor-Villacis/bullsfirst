@@ -1,17 +1,14 @@
 myApp.controller('chartCtrl', ['$scope', function($scope) {
-    $scope.chartData = ["data", 90.0,
+    $scope.chartData = [
         ["Aerospace", 90.0],
-        ["Medical", 53.6],
-        ["Agriculture ", 25.6],
-        ["Consumers", 12.4],
-        ["Consumers", 12.4],
-        ["Subsidies", 1.4],
-        ["Hello", 10.4]
+        ["Test", 53.6],
+        ["Hello", 10.4],
+        ["data-test", 10.1],
 
     ];
 }]);
 
-
+// I am trying to get the below data to appear in the above pie chart. I want it to appear everytime I add an account with the add account function.
 var data = appRoot.controller('AccountsController', function($scope){
 
     $scope.rows = [
