@@ -1,2 +1,2 @@
-var appRoot = angular.module('bullsfirst', []);
+var appRoot = angular.module('bullsfirst', [])
 var myApp = angular.module('myApp', []);

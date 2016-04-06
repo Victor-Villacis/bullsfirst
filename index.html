@@ -5,11 +5,12 @@
     <title>Bullsfirst</title>
 
     <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="import" href="https://cdn.vaadin.com/vaadin-charts/3.0.0-rc1/vaadin-charts.html">
 
     <!-- Libs -->
     <script src="angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents-lite.min.js"></script>
-    <link rel="import" href="https://cdn.vaadin.com/vaadin-charts/3.0.0-rc1/vaadin-charts.html">
 
     <!-- Application -->
     <script src="app.js"></script>
@@ -39,19 +40,47 @@
 
             <div class="actions">
                 <button ng-click="addAccount()">Add Account</button>
-                <button>Refresh</button>
+                <button ng-click="refesh()">Refresh</button>
             </div>
         </div>
 
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Market Value</th>
-                <th>Cash</th>
-                <th>Legend</th>
-            </tr>
 
-            <tr ng-repeat="row in rows">
+    <thead>
+      <tr>
+        <td>
+          <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            name
+            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="#" ng-click="sortType = 'marketValue'; sortReverse = !sortReverse">
+           Market Value
+            <span ng-show="sortType == 'marketValue' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'marketValue' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          <a href="#" ng-click="sortType = 'cash'; sortReverse = !sortReverse">
+         Cash
+            <span ng-show="sortType == 'cash' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'cash' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+         <td>
+          <a href="#" ng-click="sortType = 'legend'; sortReverse = !sortReverse">
+         Legend
+            <span ng-show="sortType == 'legend' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'legend' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+      </tr>
+    </thead>
+
+          <tbody>
+            <tr ng-repeat="row in rows | orderBy:sortType:sortReverse | filter:search">
                 <td>{{ row.name }}</td>
                 <td>{{ row.marketValue | currency }}</td>
                 <td>{{ row.cash | currency }}</td>
@@ -70,7 +99,7 @@
                 </td>
                 <td></td>
             </tr>
-
+          </tbody>
 
         </table>
     </div>
@@ -79,7 +108,7 @@
   <!-- Chart Goes Here -->
     <div id="chart-wrapper" ng-app='myApp',>
   <div ng-controller="chartCtrl">
-    <chart-wrapper data-series="{{chartData}}"></chart-wrapper>
+    <chart-wrapper data-series="{{ chartData }}"></chart-wrapper>
   </div>
 </div>
 

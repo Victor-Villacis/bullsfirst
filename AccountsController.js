@@ -1,15 +1,29 @@
 myApp.controller('chartCtrl', ['$scope', function($scope) {
     $scope.chartData = [
-        ["Aerospace", 90.0],
-        ["Test", 53.6],
-        ["Hello", 10.4],
-        ["data-test", 10.1],
+        ["Brokerage Account 3", 1999990],
+        ['Account 3', 1949990],
+        ["Brokerage Account 1", 1349990],
+        ["Brokerage Account 4", 155990],
+        ["Brokerage Account 2", 155990],
+        ["Account 4", 155990],
+        ["Account 13", 37340],
+        ["Joint Account 1", 28308],
+        ["Joint Account 2", 10000],
+        ];
 
-    ];
+  //TODO Add push function.
+  //TODO Add a refresh function that pushes the data added into the pie chart.
+  //TODO Use Angular services to parse data from below controller to above.
+  //TODO Sync pie-chart legend with that of the table.
+
+
 }]);
 
-// I am trying to get the below data to appear in the above pie chart. I want it to appear everytime I add an account with the add account function.
-var data = appRoot.controller('AccountsController', function($scope){
+appRoot.controller('AccountsController', function($scope){
+
+    $scope.sortType     = 'name'; // default sort type
+    $scope.sortReverse  = false;  // default sort order
+    $scope.search   = '';     // default search/filter term
 
     $scope.rows = [
         {
@@ -89,4 +103,7 @@ var data = appRoot.controller('AccountsController', function($scope){
             legend: 'cyan'
         });
     }
+//TODO Use Angular services to push the above conntroller into the pice-chart.
+
 });
+
